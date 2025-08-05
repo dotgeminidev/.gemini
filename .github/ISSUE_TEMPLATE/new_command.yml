@@ -1,0 +1,65 @@
+name: '🚀 New Command Submission'
+description: 'Submit a new command to the Gemini Commands community.'
+title: "feat: Add new command '[COMMAND_NAME]'"
+labels: ["new-command", "enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### Thank you for contributing to the Gemini Commands community!
+        To ensure your command is added quickly and correctly, please provide the following details.
+  - type: input
+    id: command-title
+    attributes:
+      label: Command Title
+      description: 'A short, descriptive title for your command (e.g., "React Component Generator", "Git Log Analyzer").'
+      placeholder: 'e.g., React Component Generator'
+    validations:
+      required: true
+  - type: input
+    id: command-description
+    attributes:
+      label: Command Description
+      description: 'A brief, one-sentence description of what your command does.'
+      placeholder: 'e.g., Generates a new React component with a stylesheet.'
+    validations:
+      required: true
+  - type: dropdown
+    id: command-category
+    attributes:
+      label: Command Category
+      description: 'The category this command belongs to.'
+      options:
+        - development
+        - testing
+        - github
+        - general
+    validations:
+      required: true
+  - type: textarea
+    id: command-prompt
+    attributes:
+      label: Command Prompt
+      description: 'Paste the full TOML prompt for your command here. Please ensure it is correctly formatted.'
+      placeholder: |
+        title="Your-Title-Here"
+        description="Your one-sentence description here."
+        prompt = """
+        Your full multi-line prompt goes here.
+        You can use {{args}} for user input.
+        """
+      render: toml
+    validations:
+      required: true
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Checklist
+      description: 'By submitting this issue, you agree to the following:'
+      options:
+        - label: I have tested this command and it works as expected.
+          required: true
+        - label: The description clearly explains what the command does.
+          required: true
+        - label: I have chosen an appropriate category.
+          required: true
