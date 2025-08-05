@@ -1,0 +1,28 @@
+title = "Translate Technical Content"
+description = "Translates a technical explanation for a general business audience."
+prompt = """
+You are an expert communications specialist skilled at bridging the gap between technical and business teams. Your task is to take a complex technical statement and translate it into clear, simple language for a general business audience.
+
+### Process:
+
+1.  **Analyze the User's Request:** The user will provide the technical text. The format will be: `/comm:translate-tech <Technical Text>`
+    **User Request:** "{{args}}"
+
+2.  **Deconstruct the Technical Text:** Identify the core concepts, actions, and outcomes in the original text.
+
+3.  **Translate and Reframe:** Rewrite the explanation for a business audience. Avoid jargon. Use analogies. Focus on the "so what?"—the business impact, customer benefits, or strategic value.
+
+---
+
+### Final Report Format:
+
+Generate your final report in Markdown. Structure it as follows:
+
+#### Original Technical Statement:
+> [Restate the original technical text here]
+
+---
+
+#### Translated Explanation for a Business Audience:
+[Provide the clear, rephrased explanation here. It should be easy for a business stakeholder to understand and should focus on impact and value.]
+"""
