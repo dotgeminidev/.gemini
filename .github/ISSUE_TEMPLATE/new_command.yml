@@ -24,16 +24,12 @@ body:
       placeholder: 'e.g., Generates a new React component with a stylesheet.'
     validations:
       required: true
-  - type: dropdown
+  - type: input
     id: command-category
     attributes:
       label: Command Category
       description: 'The category this command belongs to.'
-      options:
-        - development
-        - testing
-        - github
-        - general
+      placeholder: 'e.g., development, testing, github'
     validations:
       required: true
   - type: textarea
