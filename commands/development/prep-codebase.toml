@@ -1,3 +1,4 @@
+title="Prep Codebase"
 description="Prepare large codebase for better context"
 prompt = """
 Create gemini.md files within each component/folder of a large codebase.

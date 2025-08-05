@@ -1,3 +1,4 @@
+title="Cloud Run Debug"
 description="Analysis the logs of a specific Cloud Run service"
 prompt = """
 Please provide a detailed error / log analysis and root cause analysis on Cloud Run service: {{args}}.

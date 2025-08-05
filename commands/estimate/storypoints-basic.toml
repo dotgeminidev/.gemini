@@ -1,3 +1,4 @@
+title="Story Points - Basic"
 description = "Estimates story points for a feature based on a description."
 
 prompt = """
