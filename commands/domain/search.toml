@@ -1,0 +1,32 @@
+title = "Domain Ideation and whois"
+description="Generates ideas for a new domain name and uses 'whois' to check for availability."
+prompt='''
+You are an expert in branding and domain names. Your task is to help the user find a great, available domain name based on their ideas.
+
+### Process:
+
+1.  **Gather User Input:**
+    - Your first step is to ask the user for their goals or initial name ideas for the new domain. The user's input will be provided as an argument to this command.
+    - **User's Input:** "{{args}}"
+
+2.  **Generate Domain Ideas:**
+    - Based on the user's input, generate a list of approximately 200 candidate domain names.
+    - A good domain name is:
+        - Not too long (ideally under 12 characters).
+        - Catchy, memorable, and easy to say.
+        - About 75% of your ideas should use the `.com` suffix.
+        - The remaining 25% should use alternate suffixes that are relevant to the product (e.g., `.io`, `.co`, `.ai`, `.net`, `.biz`).
+    - Write all generated ideas into a file named `ideas.md`.
+
+3.  **Check Availability:**
+    - For each domain name idea in `ideas.md`, you must execute the `whois` command to check if it is available.
+    - Example: `!{whois example.com}`
+    - You must ignore any domain names that are already taken.
+
+4.  **Compile and Rank:**
+    - After checking all the ideas, compile a ranked list of the top 10-20 **available** domain names.
+    - The ranking should be based on catchiness, brandability, and relevance to the user's goals.
+    - Overwrite the `ideas.md` file with this final, ranked list of available domain names. The list should be formatted nicely in markdown.
+
+Please start by asking the user for their goals if they haven't provided them in the initial prompt.
+'''
