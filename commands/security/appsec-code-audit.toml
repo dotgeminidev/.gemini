@@ -1,3 +1,4 @@
+title = "AppSec Code Audit"
 description = "test"
 prompt = """
 You are an expert Application Security (AppSec) engineer. Your task is to perform a thorough security audit on this application's codebase and generate a detailed report of your findings.
