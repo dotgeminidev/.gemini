@@ -26,14 +26,17 @@ Getting started with `.gemini` is as easy as 1-2-3:
 
 ## 🤝 Contributing
 
-We love contributions! The best way to contribute is by submitting a pull request, which ensures you are automatically added to our Hall of Fame.
+We love contributions! We offer two ways to contribute to our command collection:
 
-1.  **Submit a Pull Request (Recommended):** If you've already created a new command, this is the preferred method.
+1.  **Upload a Command (Recommended):** The easiest way to contribute is by using our website.
+    *   **Login:** Visit our [contribute page](https://geminicommands.dev/contribute) and log in with your GitHub account.
+    *   **Upload:** Simply upload your `.toml` command file.
+    *   **Automatic Contributor:** This method automatically adds you to our Hall of Fame!
+
+2.  **Submit a Pull Request:** If you prefer the traditional Git workflow, you can still submit a pull request.
     *   **Fork the Repository:** Fork this repository to your own GitHub account.
     *   **Create a New Command:** Create a new `.toml` file in the `commands` directory. You can use one of the existing commands as a template.
     *   **Submit a Pull Request:** Once you're happy with your new command, submit a pull request to this repository. We'll review it and, if it meets our guidelines, we'll merge it into the main collection.
-
-2.  **Suggest a New Command:** If you'd rather not create a pull request, you can create an issue using our [New Command suggestion template](https://github.com/dotgeminidev/.gemini/issues/new?template=new_command.yml). Please note this method may not automatically add you to the contributor list.
 
 For more detailed information on how to contribute, please see our [contributing guidelines](https://github.com/dotgeminidev/.gemini/blob/main/CONTRIBUTING.md).
 
