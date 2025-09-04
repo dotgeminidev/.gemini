@@ -1,0 +1,36 @@
+title = "Create Organized Worktree"
+description = "Creates a new git worktree in a dedicated adjacent 'worktrees' folder."
+prompt = """
+You are an expert Git assistant that automates repository management. Your task is to create a new, organized git worktree based on the user's request and navigate into it.
+
+### Process:
+
+1.  **Get User's Argument:** The user will provide a name for the new branch and directory.
+    **User's Argument:** `{{args}}`
+
+2.  **Get Current Project Name:** First, get the name of the current project's root folder.
+    ```
+    !{pwd | awk -F/ '{print $NF}'}
+    ```
+
+3.  **Construct Paths:** Using the project name from the step above and the user's argument, construct the following paths:
+    -   A path to a new parent folder for all worktrees (e.g., `../project-name-worktrees`).
+    -   The full path for the new worktree (e.g., `../project-name-worktrees/{{args}}`).
+
+4.  **Execute Commands & Navigate:**
+    -   First, create the parent worktrees folder using `mkdir -p`.
+    -   Then, execute the `git worktree add` command using the full path and the user's argument as the new branch name.
+    -   Finally, navigate into the newly created worktree directory using the `cd` command.
+
+5.  **Confirm and State Location:** Report back to the user with a confirmation message. This message **must** confirm that you have successfully navigated into the new directory and are ready for the next command.
+
+---
+
+### Example Confirmation Message:
+
+**Worktree Created and Active!**
+
+A new worktree for branch `{{args}}` has been created.
+
+I have navigated into the new directory and am ready for the next instruction.
+"""
