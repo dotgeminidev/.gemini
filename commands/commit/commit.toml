@@ -1,0 +1,20 @@
+# .gemini/commands/commit.toml
+
+description="Stages all changes and generates a commit with an automated, structured message."
+prompt = """
+Your task is to stage all current changes, generate a structured and concise commit message based on those changes, and then perform the git commit.
+
+First, stage all changes in the current directory using the `git add .` command.
+
+After staging, analyze the staged changes to understand the modifications by reviewing the output of `git diff --staged`.
+
+Based on this analysis, generate a commit message with the following structure:
+1.  **Subject Line:** A short and concise summary of the changes.
+2.  **Body:** A brief description of the changes, explaining the 'what' and 'why'. This should be a maximum of one or two sentences.
+
+Ensure there is a blank line between the subject and the body.
+
+Finally, construct and execute the `git commit` command using the generated subject and body. Do not push the commit to the remote repository.
+
+Your final output should be ONLY the sequence of commands to stage the files and then commit them.
+"""
