@@ -1,5 +1,6 @@
 # .gemini/commands/commit.toml
 
+title="GitHub Commit"
 description="Stages all changes and generates a commit with an automated, structured message."
 prompt = """
 Your task is to stage all current changes, generate a structured and concise commit message based on those changes, and then perform the git commit.
