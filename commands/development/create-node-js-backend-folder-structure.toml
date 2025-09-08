@@ -1,0 +1,64 @@
+title ="Create Node JS Backend Folder Structure"
+
+description = "Creates a modern backend project with a clean, well-structured, and scalable folder architecture."
+
+prompt = """
+You are an expert, pixel-perfect backend engineer with access to a file and directory creation tool. Your task is to implement the user-provided project structure and generate the corresponding code for each file, ensuring all JavaScript uses modern ES6 module syntax.
+
+**You must work in an iterative loop to achieve a perfect match.**
+
+### Process:
+
+1.  **Analyze the Design:** The user has provided a reference image and a name for the project structure.
+    **Project Name:** `{{args}}`
+
+2.  **Code Initial Version:** Write the first version of the project structure. Create all directories and files, generating the initial code for each based on the descriptions below. **All JavaScript files must use ES6 module syntax (`import`/`export`).**
+
+3.  **Verify Structure:** Use a directory listing tool to capture the generated structure.
+
+4.  **Structural and Code Comparison:** Meticulously compare your generated structure and file content against the original design and requirements. Pay close attention to the use of `import` and `export` statements in all JavaScript files.
+
+5.  **Refine or Finish:**
+    -   **If there are differences:** Go back to step 2 and refine your code and structure to fix the inaccuracies. Repeat the loop.
+    -   **If it is a perfect match:** The task is complete. Provide the final, complete project structure and code as your only output.
+
+### Project Structure to Implement:
+
+Create the following folder and file structure for a project named **`{{args}}`**. Generate the content for each file based on the provided description.
+
+-   **`{{args}}/`** (Root Directory)
+    -   **`package.json`**: Generate a `package.json` file.
+        -   Set `"name": "{{args}}"`.
+        -   Add **`"type": "module"`** to enable ES6 modules.
+        -   List dependencies: `express`, `dotenv`, `winston`, `passport`, `passport-jwt`, and `cors`.
+        -   Include placeholder scripts for `start`, `dev`, and `test`.
+    -   **`config.js`**: Create `config.js`. This file should use `dotenv` to load environment variables and export them as a configuration object. Use `export default`.
+    -   **`logger.js`**: Create `logger.js`. Configure and export a Winston logger instance with transports for a colorized console and a file (`app.log`). Use `export default`.
+    -   **`app.js`**: This is the main entry point. Create `app.js`.
+        -   Import `express`, the `logger`, and the v1 router from `src/app/v1/app.v1.js`.
+        -   Set up an Express server with middleware for CORS, `express.json()`, and a request logger.
+        -   Mount the versioned API router under the `/api` prefix.
+    -   **`DockerFile`**: Create a `DockerFile` to containerize the Node.js application. Use a stable Node.js image, copy `package*.json`, install dependencies, copy the source code, expose the port, and set the `CMD` to run the app.
+    -   **`.env.example`**: Create an example environment file listing variables: `PORT=8080`, `NODE_ENV=development`, and `JWT_SECRET=your-super-secret-key`.
+    -   **`README.md`**: Create a `README.md` with setup instructions, a description of the project structure, available scripts, and API usage examples.
+    -   **`src/`**
+        -   **`app/`**
+            -   **`v1/`**
+                -   **`app.v1.js`**: Create `app.v1.js`.
+                    -   Import `express` and the test router from `./routes/test.routes.js`.
+                    -   Set up an Express sub-app using `express.Router()`.
+                    -   Configure JWT authentication middleware using Passport.
+                    -   Mount the test routes.
+                    -   Use `export default` to export the router.
+                -   **`controllers/`**
+                    -   **`test.controller.js`**: Create `test.controller.js`. Export an object containing async methods `getTest` (returns a success JSON object) and `getPing` (returns "pong").
+                -   **`models/`**
+                    -   **`test.model.js`**: Create `test.model.js`. Export a `TestModel` class with placeholder `static async` methods for CRUD operations (e.g., `create(data)`, `findById(id)`).
+                -   **`routes/`**
+                    -   **`test.routes.js`**: Create `test.routes.js`.
+                        -   Import `express` and the controller methods from `../controllers/test.controller.js`.
+                        -   Define routes for `GET /test` and `GET /ping` mapping to the controller methods.
+                        -   Use `export default` to export the router.
+                -   **`utils/`**
+                    -   **`dbConnection.js`**: Create `dbConnection.js`. Export a simple `async` function named `connectToDatabase` that logs a "Simulating database connection..." message.
+"""
