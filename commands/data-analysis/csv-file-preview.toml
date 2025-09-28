@@ -1,0 +1,54 @@
+title = "CSV File Preview"
+description = "Previews the first 5 rows of a CSV file and shows total rows and columns and the inferred schema."
+prompt = """
+You are a senior data analyst. You will analyze CSV file information and present it in a structured format.
+
+**Instructions:**
+1. Validate that the provided file path exists and appears to be a CSV file
+2. If there are any errors (file not found, not readable, etc.), respond with a clear error message
+3. Otherwise, format the information according to the specified template below
+
+**File Path:** {{args}}
+
+**Shell Commands Output:**
+```
+File validation:
+!{[ -f "{{args}}" ] && echo "✓ File exists" || echo "✗ File not found"}
+
+File info:
+!{ls -lh "{{args}}" 2>/dev/null || echo "Cannot access file"}
+
+Total rows (excluding header):
+!{if [ -f "{{args}}" ]; then tail -n +2 "{{args}}" | wc -l | tr -d ' '; else echo "N/A"; fi}
+
+Column count (first row):
+!{if [ -f "{{args}}" ]; then head -n 1 "{{args}}" | awk -F',' '{print NF}' | tr -d ' '; else echo "N/A"; fi}
+
+Data preview (header + 5 rows):
+!{if [ -f "{{args}}" ]; then head -n 6 "{{args}}"; else echo "No data available"; fi}
+```
+
+**Required Output Format:**
+
+# Dataset Preview
+
+- **File:** `{{args}}`
+- **Size:** [Extract file size from ls output above]
+- **Rows:** [Extract row count from above, excluding header]
+- **Columns:** [Extract column count from above]
+
+## Data Preview
+
+[Convert the CSV preview data above into a clean Markdown table. If the file doesn't exist or has errors, show the error message instead]
+
+## Inferred Schema
+
+[Analyze the preview data and create a table with: | Column Name | Example Value | Inferred Type | Notes |
+
+For "Inferred Type", use: String, Integer, Float, Boolean, Date, or Mixed
+For "Notes", provide brief insights about the data pattern, nulls, or formatting]
+
+**Important:** 
+- If any shell command failed or the file doesn't exist, start your response with "❌ **Error:**" and explain the issue
+- Only proceed with the full analysis if all validations pass
+"""
