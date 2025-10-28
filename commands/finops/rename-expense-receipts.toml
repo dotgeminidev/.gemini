@@ -1,0 +1,40 @@
+title = "Rename Expense Receipts"
+description = "Organizes and renames expense receipts based on their content (vendor, date, amount)."
+
+prompt = '''
+Analyze and rename expense receipts in the specified directory: {{args}}
+
+Please help organize receipts by following these steps:
+
+1. **Directory Analysis:**
+   - Use the `list_directory` tool to find all receipt files (e.g., .pdf, .png, .jpg, .jpeg) in the directory `{{args}}`.
+   - From the file list, identify the existing naming patterns.
+
+2. **Receipt Content Analysis:**
+   - For each file identified, use the `read_file` tool to access its content.
+   - Analyze the content (text or image) to extract:
+     - **Vendor Name** (e.g., Starbucks, Amazon, Delta)
+     - **Transaction Date** (use the file's date if not found)
+     - **Total Amount** (e.g., 45.50)
+   - If the content is unreadable, use a generic name.
+
+3. **Naming Strategy:**
+   - Create descriptive, organized filenames using the format:
+     `YYYY-MM-DD_Vendor-Name_Total-Amount.ext`.
+   - Use the transaction date.
+   - Use the vendor name.
+   - Use the total amount.
+   - Example: `2025-10-28_Uber-Eats_32.50.pdf`
+
+4. **Renaming Commands:**
+   - Generate safe `mv` commands to rename the files.
+   - The commands should be ready for direct execution.
+   - Handle any duplicate filenames by appending a number (e.g., _002).
+
+5. **Execution:**
+   - Generate a final `run_shell_command` to execute all the `mv` commands immediately.
+
+Please provide:
+- A list of the rename operations (old name -> new name).
+- The `run_shell_command` tool call to perform the renaming.
+'''
