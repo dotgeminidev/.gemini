@@ -1,0 +1,37 @@
+title = "Rename Screenshots by Content"
+description = "Organizes and renames screenshots based on their visual content (application, topic, date)."
+
+prompt = '''
+Analyze and rename screenshots in the specified directory: {{args}}
+
+Please help organize screenshots by following these steps:
+
+1. **Directory Analysis:**
+   - Use the `list_directory` tool to find all image files in the directory `{{args}}`.
+   - From the file list, identify existing naming patterns (e.g., "Screen Shot 2025...").
+
+2. **Screenshot Content Analysis:**
+   - For each screenshot identified, use the `read_file` tool to access its content.
+   - Analyze the visual content to determine the **main application, website, or topic** shown (e.g., Gmail, Twitter, VS-Code, Chart).
+   - Create a brief, descriptive summary of the content.
+
+3. **Naming Strategy:**
+   - Create descriptive, organized filenames using the format:
+     `YYYY-MM-DD_Application-or-Topic_Description_001.png`.
+   - Use the file's modification date for the date.
+   - Use the identified application or topic.
+   - Use the brief description.
+   - Assign a sequential number for files from the same date.
+   - Example: `2025-10-28_Gmail_Drafting-Email_001.png`
+
+4. **Renaming Commands:**
+   - Generate safe `mv` commands to rename the files.
+   - The commands should be ready for direct execution.
+
+5. **Execution:**
+   - Generate a final `run_shell_command` to execute all the `mv` commands immediately.
+
+Please provide:
+- A list of the rename operations (old name -> new name).
+- The `run_shell_command` tool call to perform the renaming.
+'''
